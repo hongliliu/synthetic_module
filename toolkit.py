@@ -442,7 +442,8 @@ def brightness_temperature(infile, outfile='', unit='jy/beam', nu=0, fwhm=0, pix
 	fwhm = np.array(fwhm) * u.arcsec.to(u.rad)
 	fwhm = np.prod(fwhm) if np.size(fwhm) > 1 else fwhm**2
 
-	data = data * (u.erg*u.s**-1*u.cm**-2*u.Hz**-1).to(u.Jy)
+	# data = data * (u.erg*u.s**-1*u.cm**-2*u.Hz**-1).to(u.Jy)
+	data = data * u.Jy.to(u.erg*u.s**-1*u.cm**-2*u.Hz**-1)
 
 	T_b=[]
 
